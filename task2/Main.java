@@ -36,11 +36,11 @@ public class Main {
         FileInputStream fis2 = new FileInputStream(filename2);
         BufferedReader bf1 = new BufferedReader(new InputStreamReader(fis1));
         BufferedReader bf2 = new BufferedReader(new InputStreamReader(fis2));
-        ArrayList<Point> quadPoints = new ArrayList<>();
-        ArrayList<Point> points = new ArrayList<>();
+        ArrayList<Point> quadPoints = new ArrayList<Point>();
+        ArrayList<Point> points = new ArrayList<Point>();
         Polygon polygon = new Polygon();
         String strLine;
-        ArrayList<Integer> pointsState = new ArrayList<>();
+        ArrayList<Integer> pointsState = new ArrayList<Integer>();
 
         // Filling quad coordinates' array
         while ((strLine = bf1.readLine()) != null){
