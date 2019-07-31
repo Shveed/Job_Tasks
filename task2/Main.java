@@ -1,16 +1,16 @@
 package com.company;
-
+////////////////////////////////////////////////////////////////////////////////////////
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+////////////////////////////////////////////////////////////////////////////////////////
 public class Main {
-    // To check point if us on side
+////To check point if us on side////////////////////////////////////////////////////////
     public static boolean isOnSide(Point p1, Point p2, int a, int b){
         return ((p1.x-a)*(p2.y-b)-(p2.x-a)*(p1.y-b)) == 0;
     }
-    // To check if point is inside
+////To check if point is inside/////////////////////////////////////////////////////////
     public static int IsContaining(Point point, Polygon polygon, ArrayList<Point> quad){
         if(polygon.contains(point.x, point.y)){
             if(isOnSide(quad.get(0), quad.get(1), point.x , point.y) ||
@@ -25,7 +25,7 @@ public class Main {
             return 3;
         }
     }
-
+/////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите имя первого файла");
@@ -41,22 +41,25 @@ public class Main {
         Polygon polygon = new Polygon();
         String strLine;
         ArrayList<Integer> pointsState = new ArrayList<Integer>();
-
-        // Filling quad coordinates' array
+////////Filling quad coordinates' array//////////////////////////////////////////////////
         while ((strLine = bf1.readLine()) != null){
-            quadPoints.add(new Point((int)(Float.parseFloat(strLine.substring(0, strLine.indexOf(" "))) * 100),
-                    (int)(Float.parseFloat(strLine.substring(strLine.indexOf(" "), strLine.length() - 2)) * 100)));
+            quadPoints.add(new Point((int)(Float.parseFloat(
+                    strLine.substring(0, strLine.indexOf(" "))) * 100),
+                    (int)(Float.parseFloat(strLine.substring(strLine.indexOf(" "),
+                            strLine.length() - 2)) * 100)));
         }
-        // Filling points' array
+////////Filling points' array////////////////////////////////////////////////////////////
         while ((strLine = bf2.readLine()) != null){
-            points.add(new Point((int)(Float.parseFloat(strLine.substring(0, strLine.indexOf(" "))) * 100),
-                    (int)(Float.parseFloat(strLine.substring(strLine.indexOf(" "), strLine.length() - 2)) * 100)));
+            points.add(new Point((int)(Float.parseFloat(
+                    strLine.substring(0, strLine.indexOf(" "))) * 100),
+                    (int)(Float.parseFloat(strLine.substring(strLine.indexOf(" "),
+                            strLine.length() - 2)) * 100)));
         }
-        // Filling the polygon
+////////Filling the polygon//////////////////////////////////////////////////////////////
         for(Point p : quadPoints){
             polygon.addPoint(p.x, p.y);
         }
-
+////////Checking every point's state, printing states////////////////////////////////////
         for(Point p : points){
             boolean isOnVertex = false;
             for(Point q: quadPoints){
